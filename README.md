@@ -1,159 +1,44 @@
-# TOC Project 2020
+# LINE BOT BARTENDER
 
-[![Maintainability](https://api.codeclimate.com/v1/badges/dc7fa47fcd809b99d087/maintainability)](https://codeclimate.com/github/NCKU-CCS/TOC-Project-2020/maintainability)
+## 前言
+有鑒於近期新冠病毒的肆虐，在酒吧喝酒可能面臨病毒感染的風險，因此，在眾人的熱烈矚目下，推出了即將風靡全球的--Bartender。
 
-[![Known Vulnerabilities](https://snyk.io/test/github/NCKU-CCS/TOC-Project-2020/badge.svg)](https://snyk.io/test/github/NCKU-CCS/TOC-Project-2020)
+## 功能
+將會提供國際調酒師協會（International Bartenders Association）以六種基酒為基底所調的調酒配方。
 
-
-Template Code for TOC Project 2020
-
-A Line bot based on a finite state machine
-
-More details in the [Slides](https://hackmd.io/@TTW/ToC-2019-Project#) and [FAQ](https://hackmd.io/s/B1Xw7E8kN)
-
-## Setup
-
-### Prerequisite
+## 環境
 * Python 3.6
-* Pipenv
-* Facebook Page and App
-* HTTPS Server
+* Line bot
+* Heroku
+* Mac os 13.0
 
-#### Install Dependency
-```sh
-pip3 install pipenv
-
-pipenv --three
-
-pipenv install
-
-pipenv shell
-```
-
-* pygraphviz (For visualizing Finite State Machine)
-    * [Setup pygraphviz on Ubuntu](http://www.jianshu.com/p/a3da7ecc5303)
-	* [Note: macOS Install error](https://github.com/pygraphviz/pygraphviz/issues/100)
-
-
-#### Secret Data
-You should generate a `.env` file to set Environment Variables refer to our `.env.sample`.
-`LINE_CHANNEL_SECRET` and `LINE_CHANNEL_ACCESS_TOKEN` **MUST** be set to proper values.
-Otherwise, you might not be able to run your code.
-
-#### Run Locally
-You can either setup https server or using `ngrok` as a proxy.
-
-#### a. Ngrok installation
-* [ macOS, Windows, Linux](https://ngrok.com/download)
-
-or you can use Homebrew (MAC)
-```sh
-brew cask install ngrok
-```
-
-**`ngrok` would be used in the following instruction**
-
-```sh
-ngrok http 8000
-```
-
-After that, `ngrok` would generate a https URL.
-
-#### Run the sever
-
-```sh
-python3 app.py
-```
-
-#### b. Servo
-
-Or You can use [servo](http://serveo.net/) to expose local servers to the internet.
+## 使用教學
+QR-code:
+![加好友](https://i.imgur.com/uD3u7VF.png)
+### Step1:加好友
+![剛加好友](https://i.imgur.com/Nx3ZVnc.png)
+### Step2:選擇基酒
+![選擇基酒](https://i.imgur.com/mbj5ClI.png)
+### Step3:選擇想喝的配方
+![選擇酒類](https://i.imgur.com/dC0rZLE.png)
+### Step4:顯示材料與方法
+![顯示配方](https://i.imgur.com/26jkwgf.png)
 
 
 ## Finite State Machine
-![fsm](./img/show-fsm.png)
+![fsm](https://i.imgur.com/P70n52V.png)
 
-## Usage
-The initial state is set to `user`.
+## State 說明：
+1. 先分出六大基酒
+2. 每一種基酒會再分出各種調酒
+3. 調酒會再回到"user"
 
-Every time `user` state is triggered to `advance` to another state, it will `go_back` to `user` state after the bot replies corresponding message.
-
-* user
-	* Input: "go to state1"
-		* Reply: "I'm entering state1"
-
-	* Input: "go to state2"
-		* Reply: "I'm entering state2"
-
-## Deploy
-Setting to deploy webhooks on Heroku.
-
-### Heroku CLI installation
-
-* [macOS, Windows](https://devcenter.heroku.com/articles/heroku-cli)
-
-or you can use Homebrew (MAC)
-```sh
-brew tap heroku/brew && brew install heroku
-```
-
-or you can use Snap (Ubuntu 16+)
-```sh
-sudo snap install --classic heroku
-```
-
-### Connect to Heroku
-
-1. Register Heroku: https://signup.heroku.com
-
-2. Create Heroku project from website
-
-3. CLI Login
-
-	`heroku login`
-
-### Upload project to Heroku
-
-1. Add local project to Heroku project
-
-	heroku git:remote -a {HEROKU_APP_NAME}
-
-2. Upload project
-
-	```
-	git add .
-	git commit -m "Add code"
-	git push -f heroku master
-	```
-
-3. Set Environment - Line Messaging API Secret Keys
-
-	```
-	heroku config:set LINE_CHANNEL_SECRET=your_line_channel_secret
-	heroku config:set LINE_CHANNEL_ACCESS_TOKEN=your_line_channel_access_token
-	```
-
-4. Your Project is now running on Heroku!
-
-	url: `{HEROKU_APP_NAME}.herokuapp.com/callback`
-
-	debug command: `heroku logs --tail --app {HEROKU_APP_NAME}`
-
-5. If fail with `pygraphviz` install errors
-
-	run commands below can solve the problems
-	```
-	heroku buildpacks:set heroku/python
-	heroku buildpacks:add --index 1 heroku-community/apt
-	```
-
-	refference: https://hackmd.io/@ccw/B1Xw7E8kN?type=view#Q2-如何在-Heroku-使用-pygraphviz
 
 ## Reference
-[Pipenv](https://medium.com/@chihsuan/pipenv-更簡單-更快速的-python-套件管理工具-135a47e504f4) ❤️ [@chihsuan](https://github.com/chihsuan)
+[Gin 琴酒](https://www.1shot.tw/17332/%E8%AA%BF%E9%85%92%E7%9F%A5%E8%AD%98-51-%E6%AC%BE%E4%B8%80%E5%AE%9A%E8%A6%81%E5%96%9D%E9%81%8E%E7%9A%84%E7%90%B4%E9%85%92%E8%AA%BF%E9%85%92) 
 
-[TOC-Project-2019](https://github.com/winonecheng/TOC-Project-2019) ❤️ [@winonecheng](https://github.com/winonecheng)
+[Vodka 伏特加](https://mf.techbang.com/posts/10662-7-at-home-can-do-ultra-simple-vodka-bartender-wine-fresh-people-can-quickly-get-started)
 
-Flask Architecture ❤️ [@Sirius207](https://github.com/Sirius207)
+[Rum 萊姆酒](https://mf.techbang.com/posts/11317-a-must-have-drink-for-a-summer-party-7-lamb-bartender-diy-recommendations-at-home-you-can-enjoy-the-tropical-style)
 
-[Line line-bot-sdk-python](https://github.com/line/line-bot-sdk-python/tree/master/examples/flask-echo)
+[Tequila 龍舌蘭](https://www.1shot.tw/14069/%E8%AA%BF%E9%85%92%E7%9F%A5%E8%AD%98-%E9%BE%8D%E8%88%8C%E8%98%AD%E5%85%A5%E9%96%80-%E5%9B%9B%E6%AC%BE%E9%BE%8D%E8%88%8C%E8%98%AD%E7%B6%93%E5%85%B8%E8%AA%BF%E9%85%92%E5%9C%A8%E5%AE%B6%E5%81%9A)
