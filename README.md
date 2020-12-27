@@ -28,6 +28,9 @@ QR-code:
 ## Finite State Machine
 ![fsm](https://i.imgur.com/P70n52V.png)
 
+* 輸入'fsm':
+![line_fsm](https://i.imgur.com/gcJ4sTB.png)
+
 ## State 說明：
 1. 先分出六大基酒
 2. 每一種基酒會再分出各種調酒
