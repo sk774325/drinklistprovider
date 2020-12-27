@@ -29,6 +29,9 @@ QR-code:
 ![fsm](https://i.imgur.com/P70n52V.png)
 
 * 輸入'fsm':
+
+
+
 ![line_fsm](https://i.imgur.com/gcJ4sTB.png)
 
 ## State 說明：
